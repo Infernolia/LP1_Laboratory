@@ -1,0 +1,130 @@
+
+#include <stdlib.h>
+#include <iostream>
+using namespace std;
+
+#include <chrono>
+using namespace std::chrono;
+
+int main()
+{
+    int n=10000;
+	int arr1[n];
+	int arr2[n];
+	int arr3[n];
+    auto start = high_resolution_clock::now();
+	for(int i=0;i<n;i++)
+	{
+		arr1[i]=rand()%10000;
+        arr2[i]=rand()%10000;
+        arr3[i] = arr1[i] + arr2[i];
+
+	}
+    auto stop = high_resolution_clock::now();
+    cout<<"Done\n "; 
+    auto duration = duration_cast<microseconds>(stop - start);
+    cout << "\nTiming is " << duration.count()/1000.0 << " milliseconds"<< endl;
+    return 0;
+}
+
+
+-----------------------------------
+
+
+
+#include <stdlib.h>
+#include <iostream>
+using namespace std;
+
+#include <chrono>
+using namespace std::chrono;
+
+int main()
+{
+    int n=100;
+    int m = 200;
+	int arr1[n];
+	int arr2[n][m];
+	int arr3[m];
+    auto start = high_resolution_clock::now();
+	for(int i=0;i<n;i++)
+	{
+		arr1[i]=rand()%100;
+        
+        for(int j=0;j<m;j++)
+        {
+            arr2[i][j]=rand()%100;
+            arr3[j]  = 0;
+        }
+
+	}
+	
+	
+	for(int i=0;i<n;i++)    
+    {    
+    for(int j=0;j<m;j++)    
+    {    
+    arr3[j]+=arr1[i]*arr2[i][j];    
+    }    
+    }    
+    auto stop = high_resolution_clock::now();
+    cout<<"Done\n "; 
+    auto duration = duration_cast<microseconds>(stop - start);
+    cout << "\nTiming is " << duration.count()/1000.0 << " milliseconds"<< endl;
+    return 0;
+}
+
+
+-------------------------------------------------
+
+
+#include <stdlib.h>
+#include <iostream>
+using namespace std;
+
+#include <chrono>
+using namespace std::chrono;
+
+int main()
+{
+    int m=100, n=200, k=300;
+    
+    int a[m][n];
+    int b[n][k];
+    int c[m][k];
+    auto start = high_resolution_clock::now();
+	for(int i=0;i<m;i++)
+	{
+        for(int j=0;j<n;j++)
+        {
+            a[i][j]=rand()%100;
+
+        }
+
+	}
+	
+		for(int i=0;i<n;i++)
+	{
+        for(int j=0;j<k;j++)
+        {
+            b[i][j]=rand()%100;
+
+        }
+
+	}
+	
+	 for (int i = 0; i < m; i++) {
+        for (int j = 0; j < k; j++) {
+            c[i][j] = 0;
+            for (int k1 = 0; k1 < n; k1++)
+                c[i][j] += a[i][k1] * b[k1][j];
+        }
+    }
+   
+    auto stop = high_resolution_clock::now();
+    cout<<"Done\n "; 
+    auto duration = duration_cast<microseconds>(stop - start);
+    cout << "\nTiming is " << duration.count()/1000.0 << " milliseconds"<< endl;
+    return 0;
+}
+
