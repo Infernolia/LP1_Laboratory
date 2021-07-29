@@ -1,0 +1,129 @@
+//------------MINIMUM ELEMENT
+
+#include <stdlib.h>
+#include <iostream>
+using namespace std;
+
+#include <chrono>
+using namespace std::chrono;
+
+int main()
+{
+    int n=10000;
+	int arr[n];
+    int min=10000;
+    auto start = high_resolution_clock::now();
+	for(int i=0;i<n;i++)
+	{
+		arr[i]=rand()%10000;
+        if(arr[i]<min)
+            min=arr[i];
+
+	}
+    auto stop = high_resolution_clock::now();
+    cout<<"The minimum of elements is \n "<<min; 
+    auto duration = duration_cast<microseconds>(stop - start);
+    cout << "\nTiming is " << duration.count()/1000.0 << " milliseconds"<< endl;
+    return 0;
+}
+
+//------------MAXIMUM ELEMENT
+
+#include <stdlib.h>
+#include <iostream>
+using namespace std;
+
+#include <chrono>
+using namespace std::chrono;
+
+int main()
+{
+    int n=10000;
+	int arr[n];
+    int max=0;
+    auto start = high_resolution_clock::now();
+	for(int i=0;i<n;i++)
+	{
+		arr[i]=rand()%10000;
+        if(arr[i]>max)
+            max=arr[i];
+
+	}
+    auto stop = high_resolution_clock::now();
+    cout<<"The maximum of elements is \n "<<max; 
+    auto duration = duration_cast<microseconds>(stop - start);
+    cout << "\nTiming is " << duration.count()/1000.0 << " milliseconds"<< endl;
+    return 0;
+}
+
+
+//------------AVERAGE
+
+#include <stdlib.h>
+#include <iostream>
+using namespace std;
+
+#include <chrono>
+using namespace std::chrono;
+
+int main()
+{
+    int n=10000;
+	int arr[n];
+    int sum=0;
+    auto start = high_resolution_clock::now();
+	for(int i=0;i<n;i++)
+	{
+		arr[i]=rand()%10000;
+        sum += arr[i];
+
+	}
+	int avg = sum/10000;
+    auto stop = high_resolution_clock::now();
+    cout<<"The average of elements is \n "<<avg; 
+    auto duration = duration_cast<microseconds>(stop - start);
+    cout << "\nTiming is " << duration.count()/1000.0 << " milliseconds"<< endl;
+    return 0;
+}
+
+
+//------------STANDARD DEVIATION
+
+
+#include <stdlib.h>
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+#include <chrono>
+using namespace std::chrono;
+
+int main()
+{
+    int n=10000;
+	int arr[n];
+    float sum = 0, mean, standardDeviation = 0.0;
+    int stddev = 0.0;
+    auto start = high_resolution_clock::now();
+	for(int i=0;i<n;i++)
+	{
+		arr[i]=rand()%10000;
+        sum += arr[i];
+
+	}
+	
+    mean = sum/10;
+
+    for(int i = 0; i < n; i++)
+        standardDeviation += pow(arr[i] - mean, 2);
+
+    stddev = sqrt(standardDeviation / 10);
+
+    auto stop = high_resolution_clock::now();
+    cout<<"The standard deviation of elements is \n "<<stddev; 
+    auto duration = duration_cast<microseconds>(stop - start);
+    cout << "\nTiming is " << duration.count()/1000.0 << " milliseconds"<< endl;
+    return 0;
+}
+
+   
